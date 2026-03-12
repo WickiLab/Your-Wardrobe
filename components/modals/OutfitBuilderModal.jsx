@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Check, Shirt, X } from 'lucide-react';
+import { Check, Shirt, X } from '@/lib/lucide-icons';
 
 export default function OutfitBuilderModal({ clothes, onClose, onSave }) {
   const [name, setName] = useState('');

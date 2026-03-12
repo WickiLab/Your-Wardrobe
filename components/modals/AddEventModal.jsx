@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X } from '@/lib/lucide-icons';
 
 export default function AddEventModal({ outfits, onClose, onSave }) {
   const [date, setDate] = useState('');

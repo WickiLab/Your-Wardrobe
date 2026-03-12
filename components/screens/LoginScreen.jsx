@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Shirt } from 'lucide-react';
+import { Shirt } from '@/lib/lucide-icons';
 
 export default function LoginScreen({ onLogin }) {
   const [email, setEmail] = useState('');

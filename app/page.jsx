@@ -8,7 +8,7 @@ import {
   CreditCard,
   Sparkles,
   LogOut,
-} from 'lucide-react';
+} from '@/lib/lucide-icons';
 
 import { TIERS } from '../lib/constants';
 import NavItem from '../components/NavItem';

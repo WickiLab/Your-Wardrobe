@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import { Shirt, Trash2, Plus } from 'lucide-react';
+import { Shirt, Trash2, Plus } from '@/lib/lucide-icons';
 import { CATEGORIES } from '../../lib/constants';
 
 export default function WardrobeScreen({

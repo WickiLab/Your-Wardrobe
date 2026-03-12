@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Upload, X } from 'lucide-react';
+import { Upload, X } from '@/lib/lucide-icons';
 import { CATEGORIES, OCCASIONS } from '../../lib/constants';
 
 export default function AddClothesModal({ onClose, onAdd }) {
