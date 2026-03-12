@@ -1,6 +1,6 @@
 'use client';
 
-import { Sparkles, Trash2, Plus, Shirt } from 'lucide-react';
+import { Sparkles, Trash2, Plus, Shirt } from '@/lib/lucide-icons';
 
 export default function OutfitsScreen({
   outfits,

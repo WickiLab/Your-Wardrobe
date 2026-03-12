@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar as CalendarIcon, Plus, Shirt } from 'lucide-react';
+import { Calendar as CalendarIcon, Plus, Shirt } from '@/lib/lucide-icons';
 
 export default function CalendarScreen({ events, outfits, onAddClick }) {
   const sortedEvents = [...events].sort(
