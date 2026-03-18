@@ -127,9 +127,9 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 px-3 py-4 text-gray-800 sm:px-6 sm:py-8">
-      <div className="mx-auto flex min-h-[92vh] w-full max-w-5xl items-center justify-center rounded-[2rem] border border-white/10 bg-white/5 p-0 shadow-[0_30px_120px_rgba(15,23,42,0.45)] backdrop-blur sm:p-4">
+      <div className="mx-auto flex min-h-[92vh] w-full max-w-6xl items-center justify-center rounded-[2rem] border border-white/10 bg-white/5 p-0 shadow-[0_30px_120px_rgba(15,23,42,0.45)] backdrop-blur sm:p-4">
         <div className="flex min-h-[92vh] w-full justify-center bg-gradient-to-br from-slate-100 via-white to-indigo-50 p-0 sm:min-h-[86vh] sm:rounded-[2rem] sm:p-4">
-          <div className="relative flex h-[92vh] w-full max-w-md flex-col overflow-hidden bg-white sm:h-[84vh] sm:rounded-[2rem] sm:border sm:border-slate-200 sm:shadow-2xl">
+          <div className="relative flex h-[92vh] w-full max-w-md flex-col overflow-hidden bg-white sm:h-[84vh] sm:rounded-[2rem] sm:border sm:border-slate-200 sm:shadow-2xl md:max-w-4xl">
             {currentScreen === 'splash' && (
               <SplashScreen onComplete={() => setCurrentScreen('welcome')} />
             )}
@@ -172,7 +172,7 @@ export default function Page() {
                   </header>
                 )}
 
-                <main className="scrollbar-hide flex-1 overflow-y-auto bg-gray-50 pb-24">
+                <main className="scrollbar-hide flex-1 overflow-y-auto bg-gray-50 pb-24 md:px-4">
                   {activeTab === 'home' && (
                     <HomeScreen
                       user={user}
@@ -217,7 +217,7 @@ export default function Page() {
                   )}
                 </main>
 
-                <nav className="absolute bottom-0 z-20 flex w-full justify-around border-t border-gray-200 bg-white px-2 py-2 pb-6">
+                <nav className="absolute bottom-0 z-20 flex w-full justify-around border-t border-gray-200 bg-white px-2 py-2 pb-6 md:bottom-4 md:left-4 md:right-4 md:w-auto md:rounded-2xl md:border md:shadow-xl">
                   <NavItem
                     icon={<Home size={22} />}
                     label="Home"
@@ -385,12 +385,12 @@ function NavItem({ icon, label, isActive, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`flex w-16 flex-col items-center gap-1 pt-2 transition-colors ${
+      className={`flex w-16 flex-col items-center gap-1 pt-2 transition-colors md:w-20 md:gap-2 ${
         isActive ? 'text-indigo-600' : 'text-gray-400 hover:text-gray-600'
       }`}
     >
       {icon}
-      <span className="text-[10px] font-medium">{label}</span>
+      <span className="text-[10px] font-medium md:text-xs">{label}</span>
     </button>
   );
 }
@@ -441,8 +441,8 @@ function WelcomeScreen({ onLogin }) {
   ];
 
   return (
-    <div className="relative flex h-full flex-col bg-white">
-      <div className="flex flex-1 flex-col items-center justify-center p-8 text-center">
+    <div className="relative flex h-full flex-col bg-white md:px-8 md:py-6">
+      <div className="flex flex-1 flex-col items-center justify-center p-8 text-center md:mx-auto md:max-w-2xl">
         <div className="mb-8 rounded-[2rem] bg-gray-50 p-8 shadow-inner">
           {slides[slide].icon}
         </div>
@@ -467,7 +467,7 @@ function WelcomeScreen({ onLogin }) {
         ))}
       </div>
 
-      <div className="space-y-3 p-6">
+      <div className="space-y-3 p-6 md:mx-auto md:w-full md:max-w-xl">
         {slide < slides.length - 1 ? (
           <button
             onClick={() => setSlide((prev) => prev + 1)}
@@ -499,7 +499,7 @@ function AuthScreen({ onLogin, onBack }) {
   const [email, setEmail] = useState('style@demo.com');
 
   return (
-    <div className="relative flex h-full flex-col bg-white p-6">
+    <div className="relative flex h-full flex-col bg-white p-6 md:px-10 md:py-8">
       <button
         onClick={onBack}
         className="absolute left-6 top-6 rounded-full bg-gray-100 p-2 text-gray-400 transition hover:bg-gray-200"
@@ -507,7 +507,7 @@ function AuthScreen({ onLogin, onBack }) {
         <X size={24} />
       </button>
 
-      <div className="mt-20 flex-1">
+      <div className="mt-20 flex-1 md:mx-auto md:w-full md:max-w-xl">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-indigo-500">
           Welcome to your wardrobe
         </p>
@@ -599,8 +599,8 @@ function HomeScreen({ user, clothes, outfits, events, onNavigate, onOpenFeature 
   const upcomingEvent = [...events].sort((a, b) => new Date(a.date) - new Date(b.date))[0];
 
   return (
-    <div className="space-y-4 p-4">
-      <div className="rounded-[2rem] bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white shadow-xl shadow-indigo-200">
+    <div className="mx-auto max-w-4xl space-y-4 p-4 md:space-y-6 md:p-6">
+      <div className="rounded-[2rem] bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white shadow-xl shadow-indigo-200 md:p-8">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-100">
           Good style starts here
         </p>
@@ -625,13 +625,13 @@ function HomeScreen({ user, clothes, outfits, events, onNavigate, onOpenFeature 
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <StatCard label="Plan" value={tier.name} accent="indigo" />
         <StatCard label="Hangers" value={usage} accent="emerald" />
         <StatCard label="Next event" value={upcomingEvent ? 'Ready' : 'None'} accent="amber" />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         <DashboardCard
           icon={<Shirt size={24} className="text-blue-500" />}
           title="My Wardrobe"
@@ -697,7 +697,7 @@ function StatCard({ label, value, accent }) {
   };
 
   return (
-    <div className={`rounded-2xl bg-gradient-to-br p-4 ${styles[accent]}`}>
+    <div className={`rounded-2xl bg-gradient-to-br p-4 md:p-5 ${styles[accent]}`}>
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
         {label}
       </p>
@@ -731,8 +731,8 @@ function WardrobeScreen({ clothes, userTier, onAddClick, onItemClick }) {
   }, [clothes, filter]);
 
   return (
-    <div className="relative h-full p-4">
-      <div className="mb-4 flex items-center justify-between rounded-[1.5rem] border border-gray-100 bg-white p-4 shadow-sm">
+    <div className="relative mx-auto h-full max-w-4xl p-4 md:p-6">
+      <div className="mb-4 flex flex-col gap-3 rounded-[1.5rem] border border-gray-100 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
             Plan usage
@@ -773,7 +773,7 @@ function WardrobeScreen({ clothes, userTier, onAddClick, onItemClick }) {
           onAction={onAddClick}
         />
       ) : (
-        <div className="grid grid-cols-2 gap-3 pb-6">
+        <div className="grid grid-cols-2 gap-3 pb-6 md:grid-cols-3 xl:grid-cols-4">
           {filteredClothes.map((item) => (
             <button
               key={item.id}
@@ -812,7 +812,7 @@ function WardrobeScreen({ clothes, userTier, onAddClick, onItemClick }) {
 
       <button
         onClick={onAddClick}
-        className="absolute bottom-6 right-6 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-xl shadow-indigo-200 transition hover:bg-indigo-700 active:scale-95"
+        className="absolute bottom-6 right-6 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-xl shadow-indigo-200 transition hover:bg-indigo-700 active:scale-95 md:bottom-8 md:right-8"
       >
         <Plus size={24} />
       </button>
@@ -822,7 +822,7 @@ function WardrobeScreen({ clothes, userTier, onAddClick, onItemClick }) {
 
 function OutfitsScreen({ outfits, onCreateClick, onOutfitClick }) {
   return (
-    <div className="p-4">
+    <div className="mx-auto max-w-4xl p-4 md:p-6">
       {outfits.length === 0 ? (
         <EmptyState
           icon={<Sparkles size={32} />}
@@ -840,47 +840,49 @@ function OutfitsScreen({ outfits, onCreateClick, onOutfitClick }) {
             <Plus size={18} /> Create New Look
           </button>
 
-          {outfits.map((outfit) => (
-            <button
-              key={outfit.id}
-              onClick={() => onOutfitClick(outfit)}
-              className="w-full rounded-[1.5rem] border border-gray-100 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 active:scale-[0.99]"
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <h3 className="font-bold text-gray-800">{outfit.name}</h3>
-                <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
-                  {Object.values(outfit.items).filter(Boolean).length} items
-                </span>
-              </div>
-              <div className="flex gap-2">
-                {['top', 'bottom', 'shoes', 'accessories'].map((slot) => {
-                  const item = outfit.items[slot];
-                  return (
-                    <div
-                      key={slot}
-                      className="relative flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gray-100 bg-gray-50"
-                    >
-                      {item ? (
-                        item.image ? (
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="h-full w-full object-cover"
-                          />
+          <div className="grid gap-4 md:grid-cols-2">
+            {outfits.map((outfit) => (
+              <button
+                key={outfit.id}
+                onClick={() => onOutfitClick(outfit)}
+                className="w-full rounded-[1.5rem] border border-gray-100 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 active:scale-[0.99]"
+              >
+                <div className="mb-3 flex items-center justify-between">
+                  <h3 className="font-bold text-gray-800">{outfit.name}</h3>
+                  <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
+                    {Object.values(outfit.items).filter(Boolean).length} items
+                  </span>
+                </div>
+                <div className="flex gap-2">
+                  {['top', 'bottom', 'shoes', 'accessories'].map((slot) => {
+                    const item = outfit.items[slot];
+                    return (
+                      <div
+                        key={slot}
+                        className="relative flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gray-100 bg-gray-50"
+                      >
+                        {item ? (
+                          item.image ? (
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            <Shirt size={20} className="text-gray-300" />
+                          )
                         ) : (
-                          <Shirt size={20} className="text-gray-300" />
-                        )
-                      ) : (
-                        <span className="text-[10px] capitalize text-gray-300">
-                          {slot}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </button>
-          ))}
+                          <span className="text-[10px] capitalize text-gray-300">
+                            {slot}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -891,7 +893,7 @@ function EventsScreen({ events, outfits, onAddClick }) {
   const sortedEvents = [...events].sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
-    <div className="p-4">
+    <div className="mx-auto max-w-3xl p-4 md:p-6">
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-lg font-bold text-gray-800">Upcoming Events</h2>
         <button
@@ -946,7 +948,7 @@ function ProfileScreen({ user, clothes, outfits, events, onLogout, openModal }) 
   const tier = TIERS[user.tier];
 
   return (
-    <div className="min-h-full bg-gray-50">
+    <div className="mx-auto min-h-full max-w-4xl bg-gray-50">
       <div className="bg-gradient-to-br from-indigo-600 via-violet-600 to-slate-900 px-6 py-12 text-center text-white">
         <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-white/10 bg-white/20">
           <User size={40} />
@@ -955,7 +957,7 @@ function ProfileScreen({ user, clothes, outfits, events, onLogout, openModal }) 
         <p className="text-sm text-indigo-200">{user.email}</p>
       </div>
 
-      <div className="-mt-6 p-4">
+      <div className="-mt-6 p-4 md:p-6">
         <div className="mb-6 flex items-center justify-between rounded-[1.5rem] border border-gray-100 bg-white p-5 shadow-lg">
           <div>
             <p className="mb-1 text-xs font-bold uppercase text-gray-500">Current Plan</p>
@@ -1154,8 +1156,9 @@ function AddClothesModal({ onClose, onSave }) {
 
 function ItemDetailModal({ item, onClose, onDelete }) {
   return (
-    <div className="absolute inset-0 z-50 flex flex-col bg-white animate-slide-in-right">
-      <div className="relative aspect-[3/4] w-full bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="absolute inset-0 z-50 bg-black/50 md:flex md:items-center md:justify-center md:p-6">
+      <div className="flex h-full flex-col bg-white animate-slide-in-right md:h-[min(860px,92%)] md:w-full md:max-w-3xl md:overflow-hidden md:rounded-[2rem] md:shadow-2xl md:animate-slide-up">
+      <div className="relative aspect-[3/4] w-full bg-gradient-to-br from-gray-100 to-gray-200 md:aspect-auto md:h-72">
         {item.image ? (
           <img src={item.image} className="h-full w-full object-cover" alt={item.name} />
         ) : (
@@ -1171,7 +1174,7 @@ function ItemDetailModal({ item, onClose, onDelete }) {
         </button>
       </div>
 
-      <div className="relative z-10 -mt-6 flex flex-1 flex-col rounded-t-[2rem] bg-white p-6">
+      <div className="relative z-10 -mt-6 flex flex-1 flex-col rounded-t-[2rem] bg-white p-6 md:mt-0 md:rounded-t-none md:p-8">
         <div className="mb-6 flex items-start justify-between">
           <div>
             <span className="rounded-md bg-indigo-50 px-2 py-1 text-xs font-bold uppercase tracking-[0.2em] text-indigo-600">
@@ -1198,6 +1201,7 @@ function ItemDetailModal({ item, onClose, onDelete }) {
             <Trash2 size={18} /> Delete Item
           </button>
         </div>
+      </div>
       </div>
     </div>
   );
@@ -1241,8 +1245,9 @@ function OutfitBuilderModal({ clothes, onClose, onSave }) {
   };
 
   return (
-    <div className="absolute inset-0 z-50 flex flex-col bg-gray-50 animate-slide-in-right">
-      <div className="flex items-center justify-between border-b bg-white p-4 shadow-sm">
+    <div className="absolute inset-0 z-50 bg-black/40 md:flex md:items-center md:justify-center md:p-6">
+      <div className="flex h-full flex-col bg-gray-50 animate-slide-in-right md:h-[min(860px,92%)] md:w-full md:max-w-4xl md:overflow-hidden md:rounded-[2rem] md:shadow-2xl md:animate-slide-up">
+      <div className="flex items-center justify-between border-b bg-white p-4 shadow-sm md:px-6">
         <h2 className="text-lg font-bold">Build Outfit</h2>
         <button onClick={onClose} className="rounded-full p-2 hover:bg-gray-100">
           <X size={20} />
@@ -1250,7 +1255,7 @@ function OutfitBuilderModal({ clothes, onClose, onSave }) {
       </div>
 
       {!activeSlot ? (
-        <div className="flex flex-1 flex-col overflow-y-auto p-4">
+        <div className="flex flex-1 flex-col overflow-y-auto p-4 md:p-6">
           <input
             type="text"
             placeholder="Name this look (Optional)"
@@ -1259,7 +1264,7 @@ function OutfitBuilderModal({ clothes, onClose, onSave }) {
             className="mb-6 w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-center font-semibold outline-none focus:ring-2 focus:ring-indigo-500"
           />
 
-          <div className="flex flex-1 flex-col items-center justify-center gap-4">
+          <div className="flex flex-1 flex-col items-center justify-center gap-4 md:gap-6">
             <OutfitSlot
               label="Top"
               item={slots.top}
@@ -1294,7 +1299,7 @@ function OutfitBuilderModal({ clothes, onClose, onSave }) {
           </button>
         </div>
       ) : (
-        <div className="flex-1 overflow-y-auto bg-white p-4">
+        <div className="flex-1 overflow-y-auto bg-white p-4 md:p-6">
           <h3 className="mb-4 text-lg font-bold capitalize">Select {activeSlot}</h3>
           <div className="grid grid-cols-3 gap-3">
             <button
@@ -1329,6 +1334,7 @@ function OutfitBuilderModal({ clothes, onClose, onSave }) {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }
@@ -1337,7 +1343,7 @@ function OutfitSlot({ label, item, onClick, small }) {
   return (
     <button
       onClick={onClick}
-      className={`${small ? 'h-24 w-24' : 'h-40 w-40'} relative flex items-center justify-center overflow-hidden rounded-[1.5rem] border-2 border-dashed transition-all ${
+      className={`${small ? 'h-24 w-24 md:h-28 md:w-28' : 'h-40 w-40 md:h-44 md:w-44'} relative flex items-center justify-center overflow-hidden rounded-[1.5rem] border-2 border-dashed transition-all ${
         item
           ? 'border-indigo-500 bg-white'
           : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
@@ -1372,16 +1378,17 @@ function OutfitDetailModal({ outfit, onClose, onDelete, onAssign }) {
   ];
 
   return (
-    <div className="absolute inset-0 z-50 flex flex-col bg-white animate-slide-in-right">
-      <div className="flex items-center justify-between border-b p-4 shadow-sm">
+    <div className="absolute inset-0 z-50 bg-black/50 md:flex md:items-center md:justify-center md:p-6">
+      <div className="flex h-full flex-col bg-white animate-slide-in-right md:h-[min(860px,92%)] md:w-full md:max-w-3xl md:overflow-hidden md:rounded-[2rem] md:shadow-2xl md:animate-slide-up">
+      <div className="flex items-center justify-between border-b p-4 shadow-sm md:px-6">
         <h2 className="text-lg font-bold">{outfit.name}</h2>
         <button onClick={onClose} className="rounded-full p-2 hover:bg-gray-100">
           <X size={20} />
         </button>
       </div>
-      <div className="flex-1 overflow-y-auto bg-gray-50 p-6">
+      <div className="flex-1 overflow-y-auto bg-gray-50 p-6 md:p-8">
         <div className="mb-6 rounded-[2rem] border border-gray-100 bg-white p-6 shadow-sm">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {slots.map(([label, item]) => (
               <div key={label} className="rounded-2xl border border-gray-100 bg-gray-50 p-4">
                 <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
@@ -1418,6 +1425,7 @@ function OutfitDetailModal({ outfit, onClose, onDelete, onAssign }) {
             <Trash2 size={18} /> Delete Outfit
           </button>
         </div>
+      </div>
       </div>
     </div>
   );
@@ -1617,7 +1625,7 @@ function ContributorsModal({ userTier, onClose, onUpgrade }) {
       <p className="mb-6 text-sm text-gray-500">
         Invite friends or stylists to review your wardrobe and suggest outfits.
       </p>
-      <div className="mb-8 flex gap-2">
+      <div className="mb-8 flex flex-col gap-2 sm:flex-row">
         <input
           type="email"
           placeholder="Email address"
@@ -1636,14 +1644,15 @@ function ContributorsModal({ userTier, onClose, onUpgrade }) {
 
 function SubscriptionsModal({ currentTier, onClose, onUpgrade }) {
   return (
-    <div className="absolute inset-0 z-50 flex flex-col bg-gray-50 animate-slide-in-right">
-      <div className="flex items-center justify-between border-b bg-white p-4 shadow-sm">
+    <div className="absolute inset-0 z-50 bg-black/50 md:flex md:items-center md:justify-center md:p-6">
+      <div className="flex h-full flex-col bg-gray-50 animate-slide-in-right md:h-[min(860px,92%)] md:w-full md:max-w-3xl md:overflow-hidden md:rounded-[2rem] md:shadow-2xl md:animate-slide-up">
+      <div className="flex items-center justify-between border-b bg-white p-4 shadow-sm md:px-6">
         <h2 className="text-lg font-bold">Upgrade Plan</h2>
         <button onClick={onClose} className="rounded-full p-2 hover:bg-gray-100">
           <X size={20} />
         </button>
       </div>
-      <div className="flex-1 space-y-4 overflow-y-auto p-4 pb-12">
+      <div className="flex-1 space-y-4 overflow-y-auto p-4 pb-12 md:p-6">
         {Object.values(TIERS).map((tier) => {
           const isCurrent = tier.id === currentTier;
           return (
@@ -1687,6 +1696,7 @@ function SubscriptionsModal({ currentTier, onClose, onUpgrade }) {
             </div>
           );
         })}
+      </div>
       </div>
     </div>
   );
@@ -1789,7 +1799,7 @@ function PremiumGate({ feature, onUpgrade, onClose }) {
 function ModalShell({ title, children, onClose }) {
   return (
     <div className="absolute inset-0 z-50 flex items-end bg-black/50 sm:items-center sm:justify-center">
-      <div className="flex h-[90%] w-full flex-col rounded-t-[2rem] bg-white shadow-2xl animate-slide-up sm:h-auto sm:max-h-[90%] sm:w-[90%] sm:rounded-[2rem] sm:animate-none">
+      <div className="flex h-[90%] w-full flex-col rounded-t-[2rem] bg-white shadow-2xl animate-slide-up sm:h-auto sm:max-h-[90%] sm:w-[92%] sm:max-w-xl sm:rounded-[2rem] sm:animate-none md:max-w-2xl lg:max-w-3xl">
         <div className="flex items-center justify-between border-b p-5">
           <h2 className="text-lg font-bold text-gray-800">{title}</h2>
           <button
