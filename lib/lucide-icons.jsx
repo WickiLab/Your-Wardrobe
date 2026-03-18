@@ -104,3 +104,68 @@ export const Check = (props) => (
     <path d="m20 6-11 11-5-5" />
   </IconBase>
 );
+
+export const ChevronRight = (props) => (
+  <IconBase {...props}>
+    <path d="m9 18 6-6-6-6" />
+  </IconBase>
+);
+
+export const User = (props) => (
+  <IconBase {...props}>
+    <path d="M20 21a8 8 0 0 0-16 0" />
+    <circle cx="12" cy="8" r="4" />
+  </IconBase>
+);
+
+export const Settings = (props) => (
+  <IconBase {...props}>
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.54V21a2 2 0 0 1-4 0v-.09a1.7 1.7 0 0 0-1-1.54 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.54-1H3a2 2 0 0 1 0-4h.09a1.7 1.7 0 0 0 1.54-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.54V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.54 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.64.25 1.07.87 1.07 1.56V11a2 2 0 0 1 0 2h-.09c-.69 0-1.31.43-1.54 1Z" />
+  </IconBase>
+);
+
+export const Bell = (props) => (
+  <IconBase {...props}>
+    <path d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5" />
+    <path d="M10 20a2 2 0 0 0 4 0" />
+  </IconBase>
+);
+
+export const Lock = (props) => (
+  <IconBase {...props}>
+    <rect x="4" y="11" width="16" height="10" rx="2" />
+    <path d="M8 11V8a4 4 0 1 1 8 0v3" />
+  </IconBase>
+);
+
+export const Tag = (props) => (
+  <IconBase {...props}>
+    <path d="M20 12 12 20 4 12V4h8Z" />
+    <circle cx="9" cy="9" r="1" />
+  </IconBase>
+);
+
+export const Users = (props) => (
+  <IconBase {...props}>
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </IconBase>
+);
+
+export const ShoppingCart = (props) => (
+  <IconBase {...props}>
+    <circle cx="9" cy="20" r="1" />
+    <circle cx="18" cy="20" r="1" />
+    <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.76L21 7H6" />
+  </IconBase>
+);
+
+export const Edit2 = (props) => (
+  <IconBase {...props}>
+    <path d="M3 21h6" />
+    <path d="M14.7 4.3a2.1 2.1 0 0 1 3 3L8 17l-4 1 1-4Z" />
+  </IconBase>
+);
